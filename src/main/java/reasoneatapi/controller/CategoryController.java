@@ -1,10 +1,8 @@
 package reasoneatapi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import reasoneatapi.dto.CategoryDTO;
 import reasoneatapi.model.Category;
 import reasoneatapi.service.CategoryService;
 
@@ -16,7 +14,7 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @PostMapping
-    public Category create(@RequestBody Category category) {
-        return categoryService.save(category);
+    public CategoryDTO create(@RequestBody CategoryDTO categoryDTO) {
+        return categoryService.save(categoryDTO);
     }
 }

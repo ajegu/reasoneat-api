@@ -1,7 +1,8 @@
 package reasoneatapi.service;
 
+import reasoneatapi.dto.CategoryDTO;
 import reasoneatapi.model.Category;
 
 public interface CategoryService {
-    Category save(Category category);
+    CategoryDTO save(CategoryDTO categoryDTO);
 }
