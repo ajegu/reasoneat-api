@@ -7,12 +7,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.support.PageableExecutionUtils;
 import org.springframework.stereotype.Service;
 import reasoneatapi.dto.CategoryDTO;
+import reasoneatapi.exception.CategoryNotFoundException;
 import reasoneatapi.mapper.CategoryMapper;
 import reasoneatapi.model.Category;
 import reasoneatapi.repository.CategoryRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -37,10 +40,39 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public CategoryDTO findOne(UUID id) {
+        Optional<Category> category = categoryRepository.findById(id);
+        if (!category.isPresent()) {
+            throw new CategoryNotFoundException(id);
+        }
+        return categoryMapper.categoryToCategoryDTO(category.get());
+    }
+
+    @Override
     public CategoryDTO save(CategoryDTO categoryDTO) {
         Category category = categoryMapper.categoryDTOToCategory(categoryDTO);
         Category savedCategory = categoryRepository.save(category);
 
         return categoryMapper.categoryToCategoryDTO(savedCategory);
+    }
+
+    @Override
+    public CategoryDTO update(CategoryDTO categoryDTO, UUID id) {
+        Optional<Category> category = categoryRepository.findById(id);
+        if (!category.isPresent()) {
+            throw new CategoryNotFoundException(id);
+        }
+
+        category.get().setName(categoryDTO.getName());
+        categoryRepository.save(category.get());
+
+        return categoryMapper.categoryToCategoryDTO(category.get());
+    }
+
+    @Override
+    public void delete(UUID id) {
+        if (categoryRepository.findById(id).isPresent()) {
+            categoryRepository.deleteById(id);
+        }
     }
 }
