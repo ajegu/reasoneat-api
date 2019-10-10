@@ -7,10 +7,13 @@ import io.swagger.annotations.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import reasoneatapi.dto.CategoryDTO;
 import reasoneatapi.service.CategoryService;
+import reasoneatapi.validator.CategoryValidator;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @RestController
@@ -20,6 +23,11 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        binder.setValidator(new CategoryValidator());
+    }
 
     @GetMapping
     @ApiOperation(value = "Lister les opérations")
@@ -38,7 +46,7 @@ public class CategoryController {
 
     @PostMapping
     @ApiOperation(value = "Créer une opération")
-    public CategoryDTO create(@RequestBody CategoryDTO categoryDTO) {
+    public CategoryDTO create(@Valid @RequestBody CategoryDTO categoryDTO) {
         return categoryService.save(categoryDTO);
     }
 
