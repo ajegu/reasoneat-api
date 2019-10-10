@@ -14,7 +14,8 @@ import java.util.HashMap;
 public class GlobalExceptionHandler {
     @ExceptionHandler({
             CategoryNotFoundException.class,
-            MethodArgumentNotValidException.class
+            MethodArgumentNotValidException.class,
+            CategoryInvalidException.class
     })
     public final ResponseEntity<ApiError> handle(Exception ex, WebRequest request) {
         HashMap<String, String> errors = new HashMap<>();
@@ -27,6 +28,11 @@ public class GlobalExceptionHandler {
         if (ex instanceof MethodArgumentNotValidException) {
             status = HttpStatus.BAD_REQUEST;
             ((MethodArgumentNotValidException) ex).getBindingResult().getAllErrors().forEach(objectError -> errors.put(objectError.getCode(), objectError.getDefaultMessage()));
+        }
+
+        if (ex instanceof CategoryInvalidException) {
+            status = HttpStatus.BAD_REQUEST;
+            errors.put("category.invalid", ex.getMessage());
         }
 
         ApiError apiError = new ApiError();

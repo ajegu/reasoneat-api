@@ -3,6 +3,8 @@ package reasoneatapi.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.UUID;
 
@@ -16,6 +18,8 @@ public class Category {
     @Column(name = "category_id")
     private UUID id;
 
+    @Size(min = 3, max = 50, message = "Le libellé doit être compris entre {min} et {max} caractères")
+    @NotNull
     private String name;
 
     @OneToMany(mappedBy = "category")

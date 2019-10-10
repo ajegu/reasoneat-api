@@ -32,5 +32,14 @@ public class CategoryValidator implements Validator {
             errors.reject("category.exists", "La catégorie existe déjà");
         }
 
+        // Contrôle de la taille du libellé
+        if (categoryDTO.getName().length() < 3) {
+            errors.rejectValue("name", "name.too_short", "Le libellé doit contenir plus de 3 caractères");
+        }
+
+        if (categoryDTO.getName().length() > 50) {
+            errors.rejectValue("name", "name.too_long", "Le libellé doit contenir moins de 50 caractères");
+        }
+
     }
 }
