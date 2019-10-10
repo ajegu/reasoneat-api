@@ -75,4 +75,9 @@ public class CategoryServiceImpl implements CategoryService {
             categoryRepository.deleteById(id);
         }
     }
+
+    @Override
+    public Boolean exists(CategoryDTO categoryDTO) {
+        return categoryRepository.findOneByName(categoryDTO.getName()).isPresent();
+    }
 }

@@ -26,7 +26,7 @@ public class CategoryController {
 
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
-        binder.setValidator(new CategoryValidator());
+        binder.setValidator(new CategoryValidator(categoryService));
     }
 
     @GetMapping
