@@ -8,8 +8,6 @@ services:
     image: postgres:latest
     ports:
       - 5678:5432
-    volumes:
-      - ./db-data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: "reasoneat_dba"
       POSTGRES_PASSWORD: "password"

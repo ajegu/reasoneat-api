@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.UUID;
 
 @Entity
-public class Product {
+class Product {
 
     @Id
     @GeneratedValue
@@ -19,6 +19,11 @@ public class Product {
     private Category category;
 
     @ManyToMany
+    @JoinTable(
+            name = "product_month",
+            joinColumns = {@JoinColumn(name = "month_id")},
+            inverseJoinColumns = {@JoinColumn(name = "product_id")}
+    )
     private Collection<Month> months;
 
 }

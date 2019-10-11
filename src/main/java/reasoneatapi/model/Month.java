@@ -5,14 +5,14 @@ import java.util.Collection;
 import java.util.UUID;
 
 @Entity
-public class Month {
+class Month {
 
     @Id
     @GeneratedValue
     @Column(name = "month_id")
     private UUID id;
 
-    private int code;
+    private String name;
 
     @ManyToMany(mappedBy = "months")
     private Collection<Product> products;
