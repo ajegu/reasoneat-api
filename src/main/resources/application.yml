@@ -1,7 +1,7 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5678/reasoneat
-    username: db-admin
+    username: reasoneat_dba
     password: password
 
   #drop n create table again, good for testing, comment this in production

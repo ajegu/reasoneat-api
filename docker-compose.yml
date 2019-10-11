@@ -11,7 +11,7 @@ services:
     volumes:
       - ./db-data:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: "db-admin"
+      POSTGRES_USER: "reasoneat_dba"
       POSTGRES_PASSWORD: "password"
       POSTGRES_DB: "reasoneat"
     networks:
