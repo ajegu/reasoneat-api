@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Collection;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -21,6 +22,13 @@ public class Category {
     @Size(min = 3, max = 50, message = "Le libellé doit être compris entre {min} et {max} caractères")
     @NotNull
     private String name;
+
+    @Column(name = "created_at")
+    @NotNull
+    private Date createdAt;
+
+    @Column(name = "updated_at")
+    private Date updatedAt;
 
     @OneToMany(mappedBy = "category")
     private Collection<Product> products;
