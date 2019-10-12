@@ -21,9 +21,9 @@ INSERT INTO month(month_id, name, season_id) VALUES
 ,('0639483e-5ec3-44c5-af49-d1d2878b6dbc', 'Décembre', '0309156c-64ba-47b2-aa90-50dd382b0da3')
 ;
 
-INSERT INTO category(category_id, name) VALUES
-('5072a1a0-7d24-44bc-9f8f-80d477529ac8', 'Légumes')
-,('3c8b542a-03c3-4ff5-9f95-2b642dec96a2', 'Fruits')
-,('a10ccd49-9dda-494f-9be7-9fc241f76381', 'Céréales')
-,('9925de99-b46f-470d-9431-1dbe40fb738d', 'Légumineuses')
+INSERT INTO category(category_id, name, created_at) VALUES
+('5072a1a0-7d24-44bc-9f8f-80d477529ac8', 'Légumes', current_timestamp)
+,('3c8b542a-03c3-4ff5-9f95-2b642dec96a2', 'Fruits', current_timestamp)
+,('a10ccd49-9dda-494f-9be7-9fc241f76381', 'Céréales', current_timestamp)
+,('9925de99-b46f-470d-9431-1dbe40fb738d', 'Légumineuses', current_timestamp)
 ;

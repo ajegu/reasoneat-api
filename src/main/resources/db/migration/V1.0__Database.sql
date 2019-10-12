@@ -4,11 +4,6 @@
 -- Project Site: pgmodeler.io
 -- Model Author: ---
 
--- object: reasoneat_dba | type: ROLE --
--- DROP ROLE IF EXISTS reasoneat_dba;
--- CREATE ROLE reasoneat_dba WITH ;
--- ddl-end --
-
 
 -- Database creation must be done outside a multicommand file.
 -- These commands were put in this file only as a convenience.
@@ -26,6 +21,8 @@ CREATE TABLE public.category (
 	header_text text,
 	footer_text text,
 	image varchar(255),
+	created_at timestamp NOT NULL,
+	updated_at timestamp,
 	CONSTRAINT category_pk PRIMARY KEY (category_id)
 
 );
