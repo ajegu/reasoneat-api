@@ -51,6 +51,8 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryDTO save(CategoryDTO categoryDTO) {
         Category category = categoryMapper.categoryDTOToCategory(categoryDTO);
 
+        category.setCreatedAt(new Date());
+
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
 
