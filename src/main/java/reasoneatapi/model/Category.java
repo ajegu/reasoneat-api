@@ -20,11 +20,11 @@ public class Category {
     private UUID id;
 
     @Size(min = 3, max = 50, message = "Le libellé doit être compris entre {min} et {max} caractères")
-    @NotNull
+    @NotNull(message = "Le libellé de la catégorie est obligatoire")
     private String name;
 
     @Column(name = "created_at")
-    @NotNull
+    @NotNull(message = "La date de création de la catégorie est obligatoire")
     private Date createdAt;
 
     @Column(name = "updated_at")
