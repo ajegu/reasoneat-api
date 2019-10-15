@@ -33,12 +33,20 @@ public class CategoryValidator implements Validator {
         }
 
         // Contrôle de la taille du libellé
-        if (categoryDTO.getName().length() < 3) {
+        if (categoryDTO.getName().length() > 0 && categoryDTO.getName().length() < 3) {
             errors.rejectValue("name", "name.too_short", "Le libellé doit contenir plus de 3 caractères");
         }
 
         if (categoryDTO.getName().length() > 50) {
             errors.rejectValue("name", "name.too_long", "Le libellé doit contenir moins de 50 caractères");
+        }
+
+        if (categoryDTO.getHeaderText().length() > 0 && categoryDTO.getHeaderText().length() < 50) {
+            errors.rejectValue("headerText", "headerText.too_short", "Le texte de haut de page doit contenir plus de 50 caractères");
+        }
+
+        if (categoryDTO.getFooterText().length() > 0 && categoryDTO.getFooterText().length() < 50) {
+            errors.rejectValue("footerText", "footerText.too_short", "Le texte de bas de page doit contenir plus de 50 caractères");
         }
 
     }

@@ -15,6 +15,12 @@ public class CategoryDTO {
     @ApiModelProperty(notes = "Libellé de la catégorie", required = true)
     private String name;
 
+    @ApiModelProperty(notes = "Texte en haut de page de la catégorie")
+    private String headerText;
+
+    @ApiModelProperty(notes = "Texte en bas de page de la catégorie")
+    private String footerText;
+
     private Date createdAt;
     private Date updatedAt;
 }

@@ -27,6 +27,14 @@ public class Category {
     @NotNull(message = "La date de création de la catégorie est obligatoire")
     private Date createdAt;
 
+    @Column(name = "header_text")
+    @Size(min = 50, message = "Le texte doit faire au minimum {min} caractères")
+    private String headerText;
+
+    @Column(name = "footer_text")
+    @Size(min = 50, message = "Le texte doit faire au minimum {min} caractères")
+    private String footerText;
+
     @Column(name = "updated_at")
     private Date updatedAt;
 
