@@ -30,7 +30,7 @@ public class CategoryController {
     }
 
     @GetMapping
-    @ApiOperation(value = "Lister les opérations")
+    @ApiOperation(value = "Lister les catégories")
     public Page<CategoryDTO> list(
             @RequestParam(required = false, name = "page", defaultValue = "0") int page,
             @RequestParam(required = false, name = "size", defaultValue = "10") int size
@@ -39,25 +39,25 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    @ApiOperation(value = "Afficher une opération")
+    @ApiOperation(value = "Afficher une catégorie")
     public CategoryDTO show(@PathVariable UUID id) {
         return categoryService.findOne(id);
     }
 
     @PostMapping
-    @ApiOperation(value = "Créer une opération")
+    @ApiOperation(value = "Créer une catégorie")
     public CategoryDTO create(@Valid @RequestBody CategoryDTO categoryDTO) {
         return categoryService.save(categoryDTO);
     }
 
     @PutMapping("/{id}")
-    @ApiOperation(value = "Modifier une opération")
+    @ApiOperation(value = "Modifier une catégorie")
     public CategoryDTO update(@RequestBody CategoryDTO categoryDTO, @PathVariable UUID id) {
         return categoryService.update(categoryDTO, id);
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation(value = "Supprimer une opération")
+    @ApiOperation(value = "Supprimer une catégorie")
     public void delete(@PathVariable UUID id) {
         categoryService.delete(id);
     }
