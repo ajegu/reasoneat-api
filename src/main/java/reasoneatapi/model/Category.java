@@ -23,16 +23,17 @@ public class Category {
     @NotNull(message = "Le libellé de la catégorie est obligatoire")
     private String name;
 
+    @Size(max = 255, message = "Le lien de l'image ne doit pas dépasser {max} caractères")
+    private String image;
+
     @Column(name = "created_at")
     @NotNull(message = "La date de création de la catégorie est obligatoire")
     private Date createdAt;
 
     @Column(name = "header_text")
-    @Size(min = 50, message = "Le texte doit faire au minimum {min} caractères")
     private String headerText;
 
     @Column(name = "footer_text")
-    @Size(min = 50, message = "Le texte doit faire au minimum {min} caractères")
     private String footerText;
 
     @Column(name = "updated_at")

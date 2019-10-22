@@ -52,7 +52,7 @@ public class CategoryController {
 
     @PutMapping("/{id}")
     @ApiOperation(value = "Modifier une catégorie")
-    public CategoryDTO update(@RequestBody CategoryDTO categoryDTO, @PathVariable UUID id) {
+    public CategoryDTO update(@Valid @RequestBody CategoryDTO categoryDTO, @PathVariable UUID id) {
         return categoryService.update(categoryDTO, id);
     }
 

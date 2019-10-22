@@ -15,6 +15,9 @@ public class CategoryDTO {
     @ApiModelProperty(notes = "Libellé de la catégorie", required = true)
     private String name;
 
+    @ApiModelProperty(notes = "Lien vers l'image de la catégorie")
+    private String image;
+
     @ApiModelProperty(notes = "Texte en haut de page de la catégorie")
     private String headerText;
 

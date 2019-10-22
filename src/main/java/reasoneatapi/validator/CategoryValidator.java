@@ -41,12 +41,16 @@ public class CategoryValidator implements Validator {
             errors.rejectValue("name", "name.too_long", "Le libellé doit contenir moins de 50 caractères");
         }
 
-        if (categoryDTO.getHeaderText().length() > 0 && categoryDTO.getHeaderText().length() < 50) {
+        if (categoryDTO.getHeaderText() != null && categoryDTO.getHeaderText().length() < 50) {
             errors.rejectValue("headerText", "headerText.too_short", "Le texte de haut de page doit contenir plus de 50 caractères");
         }
 
-        if (categoryDTO.getFooterText().length() > 0 && categoryDTO.getFooterText().length() < 50) {
+        if (categoryDTO.getFooterText() != null && categoryDTO.getFooterText().length() < 50) {
             errors.rejectValue("footerText", "footerText.too_short", "Le texte de bas de page doit contenir plus de 50 caractères");
+        }
+
+        if (categoryDTO.getImage() != null && categoryDTO.getImage().length() > 255) {
+            errors.rejectValue("image", "image.too_long", "Le lien vers l'image ne doit pas être supérieur à 255 caractères");
         }
 
     }

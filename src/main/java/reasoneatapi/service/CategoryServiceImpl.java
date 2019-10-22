@@ -12,6 +12,7 @@ import reasoneatapi.mapper.CategoryMapper;
 import reasoneatapi.model.Category;
 import reasoneatapi.repository.CategoryRepository;
 
+import javax.persistence.NonUniqueResultException;
 import javax.validation.*;
 import java.util.*;
 
@@ -50,17 +51,9 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryDTO save(CategoryDTO categoryDTO) {
         Category category = categoryMapper.categoryDTOToCategory(categoryDTO);
-
         category.setCreatedAt(new Date());
 
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        Validator validator = factory.getValidator();
-
-        Set<ConstraintViolation<Category>> constraintViolations = validator.validate(category);
-        if (constraintViolations.size() > 0) {
-            throw new CategoryInvalidException(constraintViolations.iterator().next().getMessage());
-        }
-
+        this.validate(category);
         Category savedCategory = categoryRepository.save(category);
 
         return categoryMapper.categoryToCategoryDTO(savedCategory);
@@ -72,11 +65,14 @@ public class CategoryServiceImpl implements CategoryService {
         if (!category.isPresent()) {
             throw new CategoryNotFoundException(id);
         }
+        Category categoryUpdated = categoryMapper.categoryDTOToCategory(categoryDTO);
+        categoryUpdated.setId(id);
+        categoryUpdated.setUpdatedAt(new Date());
 
-        category.get().setName(categoryDTO.getName());
-        categoryRepository.save(category.get());
+        this.validate(categoryUpdated);
+        categoryRepository.save(categoryUpdated);
 
-        return categoryMapper.categoryToCategoryDTO(category.get());
+        return categoryMapper.categoryToCategoryDTO(categoryUpdated);
     }
 
     @Override
@@ -88,6 +84,23 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Boolean exists(CategoryDTO categoryDTO) {
-        return categoryRepository.findOneByName(categoryDTO.getName()).isPresent();
+        boolean exists;
+        try {
+            Optional<Category> result = categoryRepository.findOneByName(categoryDTO.getName());
+            exists = result.isPresent();
+        } catch (NonUniqueResultException ex) {
+            exists = true;
+        }
+        return exists;
+    }
+
+    private void validate(Category category) {
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+
+        Set<ConstraintViolation<Category>> constraintViolations = validator.validate(category);
+        if (constraintViolations.size() > 0) {
+            throw new CategoryInvalidException(constraintViolations.iterator().next().getMessage());
+        }
     }
 }
