@@ -33,7 +33,7 @@ public class CategoryValidator implements Validator {
         }
 
         // Contrôle de la taille du libellé
-        if (categoryDTO.getName().length() > 0 && categoryDTO.getName().length() < 3) {
+        if (!categoryDTO.getName().isEmpty() && categoryDTO.getName().length() < 3) {
             errors.rejectValue("name", "name.too_short", "Le libellé doit contenir plus de 3 caractères");
         }
 
@@ -41,15 +41,15 @@ public class CategoryValidator implements Validator {
             errors.rejectValue("name", "name.too_long", "Le libellé doit contenir moins de 50 caractères");
         }
 
-        if (categoryDTO.getHeaderText() != null && categoryDTO.getHeaderText().length() < 50) {
+        if (!categoryDTO.getHeaderText().isEmpty() && categoryDTO.getHeaderText().length() < 50) {
             errors.rejectValue("headerText", "headerText.too_short", "Le texte de haut de page doit contenir plus de 50 caractères");
         }
 
-        if (categoryDTO.getFooterText() != null && categoryDTO.getFooterText().length() < 50) {
+        if (!categoryDTO.getFooterText().isEmpty() && categoryDTO.getFooterText().length() < 50) {
             errors.rejectValue("footerText", "footerText.too_short", "Le texte de bas de page doit contenir plus de 50 caractères");
         }
 
-        if (categoryDTO.getImage() != null && categoryDTO.getImage().length() > 255) {
+        if (!categoryDTO.getImage().isEmpty() && categoryDTO.getImage().length() > 255) {
             errors.rejectValue("image", "image.too_long", "Le lien vers l'image ne doit pas être supérieur à 255 caractères");
         }
 
