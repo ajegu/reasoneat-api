@@ -1,19 +1,12 @@
 package reasoneatapi.validator;
 
-import io.swagger.annotations.Example;
-import io.swagger.annotations.ExampleProperty;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import reasoneatapi.dto.CategoryDTO;
-import reasoneatapi.model.Category;
 import reasoneatapi.service.CategoryService;
 
 public class CategoryValidator implements Validator {
-
-
-    private String errorCode;
 
     private CategoryService categoryService;
 
