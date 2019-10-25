@@ -1,9 +1,6 @@
 package reasoneatapi.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.SwaggerDefinition;
-import io.swagger.annotations.Tag;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,6 +8,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import reasoneatapi.dto.CategoryDTO;
 import reasoneatapi.service.CategoryService;
+import reasoneatapi.validator.CategoryError;
 import reasoneatapi.validator.CategoryValidator;
 
 import javax.validation.Valid;
@@ -46,6 +44,7 @@ public class CategoryController {
 
     @PostMapping
     @ApiOperation(value = "Créer une catégorie")
+    @ApiResponses({ @ApiResponse(code = 400, message = "CategoryDTO invalid") })
     public CategoryDTO create(@Valid @RequestBody CategoryDTO categoryDTO) {
         return categoryService.save(categoryDTO);
     }
