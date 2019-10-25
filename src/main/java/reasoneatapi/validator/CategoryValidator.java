@@ -33,32 +33,35 @@ public class CategoryValidator implements Validator {
 
         CategoryDTO categoryDTO = (CategoryDTO) target;
 
-        // Contrôle de l'unicité du libellé
-        if (categoryService.exists(categoryDTO)) {
-            errors.reject(CategoryError.ALREADY_EXIST.getCode(), CategoryError.ALREADY_EXIST.getMessage());
+        if (categoryDTO.getName() != null ) {
+            // Contrôle de l'unicité du libellé
+            if (categoryService.exists(categoryDTO)) {
+                errors.reject(CategoryError.ALREADY_EXIST.getCode(), CategoryError.ALREADY_EXIST.getMessage());
+            }
+
+            // Contrôle de la taille du libellé
+            if (!categoryDTO.getName().isEmpty() && categoryDTO.getName().length() < 3) {
+                errors.rejectValue(CategoryError.NAME_TOO_SHORT.getField(), CategoryError.NAME_TOO_SHORT.getCode(), CategoryError.NAME_TOO_SHORT.getMessage());
+            }
+
+            if (categoryDTO.getName().length() > 50) {
+                errors.rejectValue(CategoryError.NAME_TOO_LONG.getField(), CategoryError.NAME_TOO_LONG.getCode(), CategoryError.NAME_TOO_LONG.getMessage());
+            }
         }
 
-        // Contrôle de la taille du libellé
-        if (!categoryDTO.getName().isEmpty() && categoryDTO.getName().length() < 3) {
-            errors.rejectValue(CategoryError.NAME_TOO_SHORT.getField(), CategoryError.NAME_TOO_SHORT.getCode(), CategoryError.NAME_TOO_SHORT.getMessage());
-        }
-
-        if (categoryDTO.getName().length() > 50) {
-            errors.rejectValue(CategoryError.NAME_TOO_LONG.getField(), CategoryError.NAME_TOO_LONG.getCode(), CategoryError.NAME_TOO_LONG.getMessage());
-        }
 
         // Contrôle du texte de haut de page
-        if (!categoryDTO.getHeaderText().isEmpty() && categoryDTO.getHeaderText().length() < 50) {
+        if (categoryDTO.getHeaderText() != null && !categoryDTO.getHeaderText().isEmpty() && categoryDTO.getHeaderText().length() < 50) {
             errors.rejectValue(CategoryError.HEADER_TEXT_TOO_SHORT.getField(), CategoryError.HEADER_TEXT_TOO_SHORT.getCode(), CategoryError.HEADER_TEXT_TOO_SHORT.getMessage());
         }
 
         // Contrôle du texte de bas de page
-        if (!categoryDTO.getFooterText().isEmpty() && categoryDTO.getFooterText().length() < 50) {
+        if (categoryDTO.getFooterText() != null && !categoryDTO.getFooterText().isEmpty() && categoryDTO.getFooterText().length() < 50) {
             errors.rejectValue(CategoryError.FOOTER_TEXT_TOO_SHORT.getField(), CategoryError.FOOTER_TEXT_TOO_SHORT.getCode(), CategoryError.FOOTER_TEXT_TOO_SHORT.getMessage());
         }
 
         // Contrôle du lien de l'image
-        if (!categoryDTO.getImage().isEmpty() && categoryDTO.getImage().length() > 255) {
+        if (categoryDTO.getImage() != null && !categoryDTO.getImage().isEmpty() && categoryDTO.getImage().length() > 255) {
             errors.rejectValue(CategoryError.IMAGE_TOO_LONG.getField(), CategoryError.IMAGE_TOO_LONG.getCode(), CategoryError.IMAGE_TOO_LONG.getMessage());
         }
 
