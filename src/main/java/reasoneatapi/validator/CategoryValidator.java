@@ -28,7 +28,7 @@ public class CategoryValidator implements Validator {
 
         if (categoryDTO.getName() != null ) {
             // Contrôle de l'unicité du libellé
-            if (categoryService.exists(categoryDTO)) {
+            if (categoryService.exist(categoryDTO)) {
                 errors.reject(CategoryError.ALREADY_EXIST.getCode(), CategoryError.ALREADY_EXIST.getMessage());
             }
 

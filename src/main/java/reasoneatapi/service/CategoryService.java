@@ -10,7 +10,7 @@ import java.util.UUID;
 public interface CategoryService {
     Page<CategoryDTO> findAll(Pageable pageable);
     CategoryDTO findOne(UUID id);
-    Boolean exists(CategoryDTO categoryDTO);
+    Boolean exist(CategoryDTO categoryDTO);
     CategoryDTO save(CategoryDTO categoryDTO) throws CategoryInvalidException;
     CategoryDTO update(CategoryDTO categoryDTO, UUID id);
     void delete(UUID id);

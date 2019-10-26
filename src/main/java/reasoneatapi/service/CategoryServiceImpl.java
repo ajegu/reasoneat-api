@@ -83,11 +83,11 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Boolean exists(CategoryDTO categoryDTO) {
+    public Boolean exist(CategoryDTO categoryDTO) {
         boolean exists;
         try {
             Optional<Category> result = categoryRepository.findOneByName(categoryDTO.getName());
-            exists = result.isPresent();
+            exists = result.isPresent() && !result.get().getId().equals(categoryDTO.getId()) ;
         } catch (NonUniqueResultException ex) {
             exists = true;
         }
