@@ -27,8 +27,6 @@ CREATE TABLE public.category (
 
 );
 -- ddl-end --
-ALTER TABLE public.category OWNER TO reasoneat_dba;
--- ddl-end --
 
 -- object: public.product | type: TABLE --
 -- DROP TABLE IF EXISTS public.product CASCADE;
@@ -39,11 +37,11 @@ CREATE TABLE public.product (
 	footer_text text,
 	image varchar(255) NOT NULL,
 	category_id uuid NOT NULL,
+	created_at timestamp NOT NULL,
+	updated_at timestamp,
 	CONSTRAINT product_pk PRIMARY KEY (product_id)
 
 );
--- ddl-end --
-ALTER TABLE public.product OWNER TO reasoneat_dba;
 -- ddl-end --
 
 -- object: public.season | type: TABLE --
@@ -57,8 +55,6 @@ CREATE TABLE public.season (
 	CONSTRAINT season_pk PRIMARY KEY (season_id)
 
 );
--- ddl-end --
-ALTER TABLE public.season OWNER TO reasoneat_dba;
 -- ddl-end --
 
 -- object: public.month | type: TABLE --
@@ -74,8 +70,6 @@ CREATE TABLE public.month (
 
 );
 -- ddl-end --
-ALTER TABLE public.month OWNER TO reasoneat_dba;
--- ddl-end --
 
 -- object: public.product_month | type: TABLE --
 -- DROP TABLE IF EXISTS public.product_month CASCADE;
@@ -85,8 +79,6 @@ CREATE TABLE public.product_month (
 	CONSTRAINT product_month_pk PRIMARY KEY (product_id,month_id)
 
 );
--- ddl-end --
-ALTER TABLE public.product_month OWNER TO reasoneat_dba;
 -- ddl-end --
 
 -- object: fk_product_category | type: CONSTRAINT --

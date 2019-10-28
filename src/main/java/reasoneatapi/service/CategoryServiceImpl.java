@@ -29,11 +29,7 @@ public class CategoryServiceImpl implements CategoryService {
     public Page<CategoryDTO> findAll(Pageable pageable) {
         Page<Category> categoryPage = categoryRepository.findAll(pageable);
 
-        List<CategoryDTO> categoryDTOList = new ArrayList<>();
-        categoryPage.getContent().forEach(category -> {
-            CategoryDTO categoryDTO = categoryMapper.categoryToCategoryDTO(category);
-            categoryDTOList.add(categoryDTO);
-        });
+        List<CategoryDTO> categoryDTOList = categoryMapper.listCategoryToListCategoryDTO(categoryPage.getContent());
 
         return PageableExecutionUtils.getPage(categoryDTOList, pageable, categoryPage::getTotalElements);
     }

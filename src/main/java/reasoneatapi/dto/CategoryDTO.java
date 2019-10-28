@@ -1,5 +1,6 @@
 package reasoneatapi.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -9,6 +10,7 @@ import java.util.UUID;
 @Data
 public class CategoryDTO {
     @ApiModelProperty(notes = "L'ID est automatiquement généré par la base de données")
+    @JsonProperty("category_id")
     private UUID id;
 
     @ApiModelProperty(notes = "Libellé de la catégorie", required = true)

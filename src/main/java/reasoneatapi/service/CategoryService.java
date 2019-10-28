@@ -12,6 +12,6 @@ public interface CategoryService {
     CategoryDTO findOne(UUID id);
     Boolean exist(CategoryDTO categoryDTO);
     CategoryDTO save(CategoryDTO categoryDTO) throws CategoryInvalidException;
-    CategoryDTO update(CategoryDTO categoryDTO, UUID id);
+    CategoryDTO update(CategoryDTO categoryDTO, UUID id) throws CategoryInvalidException;
     void delete(UUID id);
 }
