@@ -25,7 +25,6 @@ public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private CategoryMapper categoryMapper;
 
-
     @Override
     public Page<CategoryDTO> findAll(Pageable pageable) {
         Page<Category> categoryPage = categoryRepository.findAll(pageable);

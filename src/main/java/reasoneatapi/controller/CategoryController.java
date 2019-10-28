@@ -8,7 +8,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import reasoneatapi.dto.CategoryDTO;
 import reasoneatapi.service.CategoryService;
-import reasoneatapi.validator.CategoryError;
 import reasoneatapi.validator.CategoryValidator;
 
 import javax.validation.Valid;

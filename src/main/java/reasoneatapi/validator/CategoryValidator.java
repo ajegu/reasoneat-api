@@ -42,7 +42,6 @@ public class CategoryValidator implements Validator {
             }
         }
 
-
         // Contrôle du texte de haut de page
         if (categoryDTO.getHeaderText() != null && !categoryDTO.getHeaderText().isEmpty() && categoryDTO.getHeaderText().length() < 50) {
             errors.rejectValue(CategoryError.HEADER_TEXT_TOO_SHORT.getField(), CategoryError.HEADER_TEXT_TOO_SHORT.getCode(), CategoryError.HEADER_TEXT_TOO_SHORT.getMessage());
