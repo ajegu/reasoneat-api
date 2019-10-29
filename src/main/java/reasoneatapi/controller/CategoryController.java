@@ -50,6 +50,7 @@ public class CategoryController {
 
     @PutMapping("/{id}")
     @ApiOperation(value = "Modifier une catégorie")
+    @ApiResponses({ @ApiResponse(code = 400, message = "CategoryDTO invalid") })
     public CategoryDTO update(@Valid @RequestBody CategoryDTO categoryDTO, @PathVariable UUID id) {
         return categoryService.update(categoryDTO, id);
     }
