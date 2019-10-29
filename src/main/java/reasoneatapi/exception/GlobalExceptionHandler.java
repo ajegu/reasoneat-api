@@ -17,14 +17,16 @@ public class GlobalExceptionHandler {
             HttpMessageNotReadableException.class,
             CategoryNotFoundException.class,
             MethodArgumentNotValidException.class,
-            CategoryInvalidException.class
+            CategoryInvalidException.class,
+            ProductNotFoundException.class,
+            ProductInvalidException.class
     })
     public final ResponseEntity<ApiError> handle(Exception ex, WebRequest request) {
         HashMap<String, String> errors = new HashMap<>();
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
         if (ex instanceof CategoryNotFoundException) {
             status = HttpStatus.NOT_FOUND;
-            errors.put("categorie.not_found", ex.getMessage());
+            errors.put("category.not_found", ex.getMessage());
         }
 
         if (ex instanceof MethodArgumentNotValidException) {
@@ -39,6 +41,16 @@ public class GlobalExceptionHandler {
 
         if (ex instanceof HttpMessageNotReadableException) {
             errors.put("request", "La requête est invalide");
+        }
+
+        if (ex instanceof ProductInvalidException) {
+            status = HttpStatus.BAD_REQUEST;
+            errors.put("product.invalid", ex.getMessage());
+        }
+
+        if (ex instanceof ProductNotFoundException) {
+            status = HttpStatus.NOT_FOUND;
+            errors.put("product.not_found", ex.getMessage());
         }
 
         ApiError apiError = new ApiError();

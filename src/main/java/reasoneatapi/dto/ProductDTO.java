@@ -14,6 +14,8 @@ public class ProductDTO {
 
     private String name;
 
+    private String image;
+
     @JsonProperty("header_text")
     private String headerText;
 
@@ -26,7 +28,7 @@ public class ProductDTO {
     @JsonProperty("updated_at")
     private Date updatedAt;
 
-    private CategoryDTO categoryDTO;
+    private CategoryDTO category;
 
     private Collection<MonthDTO> months;
 

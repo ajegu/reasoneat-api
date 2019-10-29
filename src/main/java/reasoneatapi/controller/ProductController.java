@@ -7,9 +7,11 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import reasoneatapi.dto.ProductDTO;
 import reasoneatapi.service.ProductService;
+import reasoneatapi.validator.ProductValidator;
 
 import javax.validation.Valid;
 import java.util.UUID;
@@ -21,6 +23,11 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        binder.setValidator(new ProductValidator());
+    }
 
     @GetMapping
     @ApiOperation(value = "Lister les produits")
