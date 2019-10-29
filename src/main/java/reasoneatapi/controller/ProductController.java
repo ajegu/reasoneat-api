@@ -28,6 +28,8 @@ public class ProductController {
         return productService.findAll(PageRequest.of(page, size));
     }
 
+    @GetMapping("/{id}")
+    @ApiOperation("Afficher un produit")
     public ProductDTO show(@PathVariable UUID id) {
         return productService.findOne(id);
     }
