@@ -20,11 +20,16 @@ public class CategoryDTO {
     private String image;
 
     @ApiModelProperty(notes = "Texte en haut de page de la catégorie")
+    @JsonProperty("header_text")
     private String headerText;
 
     @ApiModelProperty(notes = "Texte en bas de page de la catégorie")
+    @JsonProperty("footer_text")
     private String footerText;
 
+    @JsonProperty("created_at")
     private Date createdAt;
+
+    @JsonProperty("updated_at")
     private Date updatedAt;
 }
