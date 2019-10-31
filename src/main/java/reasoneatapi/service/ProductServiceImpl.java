@@ -103,4 +103,15 @@ public class ProductServiceImpl implements ProductService {
 
         return productMapper.productToProductDTO(productUpdated);
     }
+
+    @Override
+    public void delete(UUID id) throws ProductNotFoundException {
+        Optional<Product> productOptional = productRepository.findById(id);
+
+        if (!productOptional.isPresent()) {
+            throw new ProductNotFoundException(id);
+        }
+
+        productRepository.delete(productOptional.get());
+    }
 }

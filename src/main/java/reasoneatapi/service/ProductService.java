@@ -14,4 +14,5 @@ public interface ProductService {
     ProductDTO save(ProductDTO productDTO) throws ProductInvalidException;
     Boolean exist(ProductDTO productDTO);
     ProductDTO update(ProductDTO productDTO, UUID id) throws ProductInvalidException, ProductNotFoundException;
+    void delete(UUID id) throws ProductNotFoundException;
 }

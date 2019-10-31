@@ -10,7 +10,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import reasoneatapi.dto.ProductDTO;
-import reasoneatapi.model.Product;
 import reasoneatapi.service.CategoryService;
 import reasoneatapi.service.MonthService;
 import reasoneatapi.service.ProductService;
@@ -65,5 +64,11 @@ public class ProductController {
     @ApiResponses({ @ApiResponse(code = 400, message = "ProductDTO invalid") })
     public ProductDTO update(@Valid @RequestBody ProductDTO productDTO, @PathVariable UUID id) {
         return productService.update(productDTO, id);
+    }
+
+    @DeleteMapping("/{id}")
+    @ApiOperation("Supprimer un produit")
+    public void delete(@PathVariable UUID id) {
+        productService.delete(id);
     }
 }
