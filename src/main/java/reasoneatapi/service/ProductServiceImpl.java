@@ -84,4 +84,23 @@ public class ProductServiceImpl implements ProductService {
         }
         return exists;
     }
+
+    @Override
+    public ProductDTO update(ProductDTO productDTO, UUID id) throws ProductInvalidException {
+        Optional<Product> productOptional = productRepository.findById(id);
+
+        if (!productOptional.isPresent()) {
+            throw new ProductNotFoundException(id);
+        }
+
+        Product product = productMapper.productDTOToProduct(productDTO);
+        product.setId(id);
+        product.setUpdatedAt(new Date());
+
+        this.validate(product);
+
+        Product productUpdated = productRepository.save(product);
+
+        return productMapper.productToProductDTO(productUpdated);
+    }
 }
