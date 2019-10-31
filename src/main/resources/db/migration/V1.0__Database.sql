@@ -36,9 +36,9 @@ CREATE TABLE public.product (
 	header_text text,
 	footer_text text,
 	image varchar(255) NOT NULL,
-	category_id uuid NOT NULL,
 	created_at timestamp NOT NULL,
 	updated_at timestamp,
+	category_id uuid NOT NULL,
 	CONSTRAINT product_pk PRIMARY KEY (product_id)
 
 );
@@ -49,9 +49,6 @@ CREATE TABLE public.product (
 CREATE TABLE public.season (
 	season_id uuid NOT NULL,
 	name varchar(50) NOT NULL,
-	header_text text,
-	footer_text text,
-	image varchar(255),
 	CONSTRAINT season_pk PRIMARY KEY (season_id)
 
 );
@@ -62,9 +59,6 @@ CREATE TABLE public.season (
 CREATE TABLE public.month (
 	month_id uuid NOT NULL,
 	name varchar(50) NOT NULL,
-	header_text text,
-	footer_text text,
-	image varchar(255),
 	season_id uuid NOT NULL,
 	CONSTRAINT month_pk PRIMARY KEY (month_id)
 

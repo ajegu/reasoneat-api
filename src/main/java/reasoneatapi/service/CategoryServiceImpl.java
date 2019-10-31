@@ -35,7 +35,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public CategoryDTO findOne(UUID id) {
+    public CategoryDTO findOne(UUID id) throws CategoryNotFoundException {
         Optional<Category> category = categoryRepository.findById(id);
         if (!category.isPresent()) {
             throw new CategoryNotFoundException(id);

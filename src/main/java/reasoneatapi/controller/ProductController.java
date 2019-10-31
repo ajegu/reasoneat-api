@@ -10,6 +10,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import reasoneatapi.dto.ProductDTO;
+import reasoneatapi.service.CategoryService;
+import reasoneatapi.service.MonthService;
 import reasoneatapi.service.ProductService;
 import reasoneatapi.validator.ProductValidator;
 
@@ -24,9 +26,15 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private CategoryService categoryService;
+
+    @Autowired
+    private MonthService monthService;
+
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
-        binder.setValidator(new ProductValidator());
+        binder.setValidator(new ProductValidator(productService, categoryService, monthService));
     }
 
     @GetMapping

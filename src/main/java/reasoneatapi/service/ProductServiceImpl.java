@@ -12,6 +12,7 @@ import reasoneatapi.mapper.ProductMapper;
 import reasoneatapi.model.Product;
 import reasoneatapi.repository.ProductRepository;
 
+import javax.persistence.NonUniqueResultException;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -70,5 +71,17 @@ public class ProductServiceImpl implements ProductService {
         if (constraintViolations.size() > 0) {
             throw new ProductInvalidException(constraintViolations.iterator().next().getMessage());
         }
+    }
+
+    @Override
+    public Boolean exist(ProductDTO productDTO) {
+        boolean exists;
+        try {
+            Optional<Product> result = productRepository.findOneByName(productDTO.getName());
+            exists = result.isPresent() && !result.get().getId().equals(productDTO.getId()) ;
+        } catch (NonUniqueResultException ex) {
+            exists = true;
+        }
+        return exists;
     }
 }

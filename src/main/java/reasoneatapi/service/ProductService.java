@@ -11,4 +11,5 @@ public interface ProductService {
     Page<ProductDTO> findAll(Pageable pageable);
     ProductDTO findOne(UUID id) throws ProductNotFoundException;
     ProductDTO save(ProductDTO productDTO);
+    Boolean exist(ProductDTO productDTO);
 }
