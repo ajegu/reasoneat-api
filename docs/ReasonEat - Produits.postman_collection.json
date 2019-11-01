@@ -1,0 +1,555 @@
+{
+	"info": {
+		"_postman_id": "f768446e-b01b-4c0a-9a0a-a8c0d16def80",
+		"name": "ReasonEat - Produits",
+		"description": "Insertion d'un jeu de données de 15 produits",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Poire",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Poire\",\n\t\"image\": \"https://storage.cloud.google.com/reasoneat-images/poire_new_346_346_filled.jpg\",\n\t\"category\": {\n\t\t\"category_id\": \"3c8b542a-03c3-4ff5-9f95-2b642dec96a2\"\n\t},\n\t\"months\": [{\n\t\t\"month_id\": \"5edf0544-cb18-4945-9bd8-45f818307e68\"\n\t}, {\n\t\t\"month_id\": \"fc732f5a-0813-4cfa-969e-00b5be7bea1d\"\n\t}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Avocat",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Avocat\",\n\t\"image\": \"https://storage.cloud.google.com/reasoneat-images/avocat.jpg\",\n\t\"category\": {\n\t\t\"category_id\": \"5072a1a0-7d24-44bc-9f8f-80d477529ac8\"\n\t},\n\t\"months\": [{\n\t\t\"month_id\": \"36ad4778-48ba-43d6-ac4f-7bca0033f76d\"\n\t}, {\n\t\t\"month_id\": \"1246503b-435c-4d94-8968-a45fcbe92832\"\n\t}, {\n\t\t\"month_id\": \"da23c8c0-4089-44c3-9528-8e79f538336f\"\n\t}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Brocoli",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Brocoli\",\n\t\"image\": \"https://storage.cloud.google.com/reasoneat-images/brocoli.jpg\",\n\t\"category\": {\n\t\t\"category_id\": \"5072a1a0-7d24-44bc-9f8f-80d477529ac8\"\n\t},\n\t\"months\": [{\n\t\t\"month_id\": \"5edf0544-cb18-4945-9bd8-45f818307e68\"\n\t}, {\n\t\t\"month_id\": \"fc732f5a-0813-4cfa-969e-00b5be7bea1d\"\n\t}, {\n\t\t\"month_id\": \"dd3e975b-ff02-4295-9778-9a43bf832806\"\n\t}, {\n\t\t\"month_id\": \"0639483e-5ec3-44c5-af49-d1d2878b6dbc\"\n\t}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Carotte",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Carotte\",\n\t\"image\": \"https://storage.cloud.google.com/reasoneat-images/carotte.jpg\",\n\t\"category\": {\n\t\t\"category_id\": \"5072a1a0-7d24-44bc-9f8f-80d477529ac8\"\n\t},\n\t\"months\": [{\n\t\t\"month_id\": \"fc732f5a-0813-4cfa-969e-00b5be7bea1d\"\n\t}, {\n\t\t\"month_id\": \"dd3e975b-ff02-4295-9778-9a43bf832806\"\n\t}, {\n\t\t\"month_id\": \"0639483e-5ec3-44c5-af49-d1d2878b6dbc\"\n\t}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Champignon",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Champignon\",\n\t\"image\": \"https://storage.cloud.google.com/reasoneat-images/champignon.jpg\",\n\t\"category\": {\n\t\t\"category_id\": \"5072a1a0-7d24-44bc-9f8f-80d477529ac8\"\n\t},\n\t\"months\": [{\n\t\t\"month_id\": \"fc732f5a-0813-4cfa-969e-00b5be7bea1d\"\n\t}, {\n\t\t\"month_id\": \"dd3e975b-ff02-4295-9778-9a43bf832806\"\n\t}, {\n\t\t\"month_id\": \"0639483e-5ec3-44c5-af49-d1d2878b6dbc\"\n\t}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Citrouille",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Citrouille\",\n\t\"image\": \"https://storage.cloud.google.com/reasoneat-images/citrouille.jpg\",\n\t\"category\": {\n\t\t\"category_id\": \"5072a1a0-7d24-44bc-9f8f-80d477529ac8\"\n\t},\n\t\"months\": [{\n\t\t\"month_id\": \"fc732f5a-0813-4cfa-969e-00b5be7bea1d\"\n\t}, {\n\t\t\"month_id\": \"dd3e975b-ff02-4295-9778-9a43bf832806\"\n\t}, {\n\t\t\"month_id\": \"0639483e-5ec3-44c5-af49-d1d2878b6dbc\"\n\t}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Concombre",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Concombre\",\n\t\"image\": \"https://storage.cloud.google.com/reasoneat-images/concombre.jpg\",\n\t\"category\": {\n\t\t\"category_id\": \"5072a1a0-7d24-44bc-9f8f-80d477529ac8\"\n\t},\n\t\"months\": [{\n\t\t\"month_id\": \"fc732f5a-0813-4cfa-969e-00b5be7bea1d\"\n\t}, {\n\t\t\"month_id\": \"dd3e975b-ff02-4295-9778-9a43bf832806\"\n\t}, {\n\t\t\"month_id\": \"0639483e-5ec3-44c5-af49-d1d2878b6dbc\"\n\t}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "epinard",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Epinard\",\n\t\"image\": \"https://storage.cloud.google.com/reasoneat-images/epinard.jpg\",\n\t\"category\": {\n\t\t\"category_id\": \"5072a1a0-7d24-44bc-9f8f-80d477529ac8\"\n\t},\n\t\"months\": [{\n\t\t\"month_id\": \"fc732f5a-0813-4cfa-969e-00b5be7bea1d\"\n\t}, {\n\t\t\"month_id\": \"dd3e975b-ff02-4295-9778-9a43bf832806\"\n\t}, {\n\t\t\"month_id\": \"0639483e-5ec3-44c5-af49-d1d2878b6dbc\"\n\t}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Laitue",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Laitue\",\n\t\"image\": \"https://storage.cloud.google.com/reasoneat-images/laitue.jpg\",\n\t\"category\": {\n\t\t\"category_id\": \"5072a1a0-7d24-44bc-9f8f-80d477529ac8\"\n\t},\n\t\"months\": [{\n\t\t\"month_id\": \"fc732f5a-0813-4cfa-969e-00b5be7bea1d\"\n\t}, {\n\t\t\"month_id\": \"dd3e975b-ff02-4295-9778-9a43bf832806\"\n\t}, {\n\t\t\"month_id\": \"0639483e-5ec3-44c5-af49-d1d2878b6dbc\"\n\t}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Banane",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Banane\",\n\t\"image\": \"https://storage.cloud.google.com/reasoneat-images/banane.jpg\",\n\t\"category\": {\n\t\t\"category_id\": \"3c8b542a-03c3-4ff5-9f95-2b642dec96a2\"\n\t},\n\t\"months\": [{\n\t\t\"month_id\": \"fc732f5a-0813-4cfa-969e-00b5be7bea1d\"\n\t}, {\n\t\t\"month_id\": \"dd3e975b-ff02-4295-9778-9a43bf832806\"\n\t}, {\n\t\t\"month_id\": \"0639483e-5ec3-44c5-af49-d1d2878b6dbc\"\n\t}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tomate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Tomate\",\n\t\"image\": \"https://storage.cloud.google.com/reasoneat-images/tomate.jpg\",\n\t\"category\": {\n\t\t\"category_id\": \"5072a1a0-7d24-44bc-9f8f-80d477529ac8\"\n\t},\n\t\"months\": [{\n\t\t\"month_id\": \"e040f5b5-672c-4e65-826a-fb83af0e5705\"\n\t}, {\n\t\t\"month_id\": \"d154db2f-66ba-4255-a1d1-378229355a86\"\n\t}, {\n\t\t\"month_id\": \"7c717985-fd05-4faf-9f1a-ceac77b38f3f\"\n\t}, {\n\t\t\"month_id\": \"dd69d178-8a74-4949-9382-e4b15b7956fd\"\n\t}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Abricot",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Abricot\",\n\t\"image\": \"https://storage.cloud.google.com/reasoneat-images/abricot.jpg\",\n\t\"category\": {\n\t\t\"category_id\": \"3c8b542a-03c3-4ff5-9f95-2b642dec96a2\"\n\t},\n\t\"months\": [{\n\t\t\"month_id\": \"e040f5b5-672c-4e65-826a-fb83af0e5705\"\n\t}, {\n\t\t\"month_id\": \"d154db2f-66ba-4255-a1d1-378229355a86\"\n\t}, {\n\t\t\"month_id\": \"7c717985-fd05-4faf-9f1a-ceac77b38f3f\"\n\t}, {\n\t\t\"month_id\": \"dd69d178-8a74-4949-9382-e4b15b7956fd\"\n\t}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fraise",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Fraise\",\n\t\"image\": \"https://storage.cloud.google.com/reasoneat-images/fraise.jpg\",\n\t\"category\": {\n\t\t\"category_id\": \"3c8b542a-03c3-4ff5-9f95-2b642dec96a2\"\n\t},\n\t\"months\": [{\n\t\t\"month_id\": \"e040f5b5-672c-4e65-826a-fb83af0e5705\"\n\t}, {\n\t\t\"month_id\": \"d154db2f-66ba-4255-a1d1-378229355a86\"\n\t}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Framboise",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Framboise\",\n\t\"image\": \"https://storage.cloud.google.com/reasoneat-images/framboise.jpg\",\n\t\"category\": {\n\t\t\"category_id\": \"3c8b542a-03c3-4ff5-9f95-2b642dec96a2\"\n\t},\n\t\"months\": [{\n\t\t\"month_id\": \"e040f5b5-672c-4e65-826a-fb83af0e5705\"\n\t}, {\n\t\t\"month_id\": \"d154db2f-66ba-4255-a1d1-378229355a86\"\n\t}, {\n\t\t\"month_id\": \"7c717985-fd05-4faf-9f1a-ceac77b38f3f\"\n\t}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Myrtille",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Myrtille\",\n\t\"image\": \"https://storage.cloud.google.com/reasoneat-images/myrtille.jpg\",\n\t\"category\": {\n\t\t\"category_id\": \"3c8b542a-03c3-4ff5-9f95-2b642dec96a2\"\n\t},\n\t\"months\": [{\n\t\t\"month_id\": \"e040f5b5-672c-4e65-826a-fb83af0e5705\"\n\t}, {\n\t\t\"month_id\": \"d154db2f-66ba-4255-a1d1-378229355a86\"\n\t}, {\n\t\t\"month_id\": \"7c717985-fd05-4faf-9f1a-ceac77b38f3f\"\n\t}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Raisin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Raisin\",\n\t\"image\": \"https://storage.cloud.google.com/reasoneat-images/raisin.jpg\",\n\t\"category\": {\n\t\t\"category_id\": \"3c8b542a-03c3-4ff5-9f95-2b642dec96a2\"\n\t},\n\t\"months\": [{\n\t\t\"month_id\": \"fc732f5a-0813-4cfa-969e-00b5be7bea1d\"\n\t}, {\n\t\t\"month_id\": \"dd3e975b-ff02-4295-9778-9a43bf832806\"\n\t}, {\n\t\t\"month_id\": \"0639483e-5ec3-44c5-af49-d1d2878b6dbc\"\n\t}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
