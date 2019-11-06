@@ -7,9 +7,11 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import reasoneatapi.dto.ProductDTO;
+import reasoneatapi.helper.SortHelper;
 import reasoneatapi.service.CategoryService;
 import reasoneatapi.service.MonthService;
 import reasoneatapi.service.ProductService;
@@ -32,6 +34,9 @@ public class ProductController {
     @Autowired
     private MonthService monthService;
 
+    @Autowired
+    private SortHelper sortHelper;
+
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
         binder.setValidator(new ProductValidator(productService, categoryService, monthService));
@@ -41,9 +46,13 @@ public class ProductController {
     @ApiOperation(value = "Lister les produits")
     public Page<ProductDTO> list(
             @RequestParam(required = false, name = "page", defaultValue = "0") int page,
-            @RequestParam(required = false, name = "size", defaultValue = "10") int size
-    ) {
-        return productService.findAll(PageRequest.of(page, size));
+            @RequestParam(required = false, name = "size", defaultValue = "10") int size,
+            @RequestParam(required = false, name = "sortProperty", defaultValue = "name") String sortProperty,
+            @RequestParam(required = false, name = "sortDirection", defaultValue = "ASC") Sort.Direction sortDirection
+            ) {
+        String validSortProperty = sortHelper.getValidSortProperty(sortProperty, ProductDTO.class, "name");
+        Sort sort = new Sort(sortDirection, validSortProperty);
+        return productService.findAll(PageRequest.of(page, size, sort));
     }
 
     @GetMapping("/{id}")
