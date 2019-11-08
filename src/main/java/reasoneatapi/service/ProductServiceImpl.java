@@ -6,11 +6,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.support.PageableExecutionUtils;
 import org.springframework.stereotype.Service;
 import reasoneatapi.dto.ProductDTO;
+import reasoneatapi.dto.ProductFilterDTO;
 import reasoneatapi.exception.ProductInvalidException;
 import reasoneatapi.exception.ProductNotFoundException;
 import reasoneatapi.mapper.ProductMapper;
 import reasoneatapi.model.Product;
 import reasoneatapi.repository.ProductRepository;
+import reasoneatapi.spec.ProductSpec;
 
 import javax.persistence.NonUniqueResultException;
 import javax.validation.ConstraintViolation;
@@ -29,8 +31,8 @@ public class ProductServiceImpl implements ProductService {
     private ProductMapper productMapper;
 
     @Override
-    public Page<ProductDTO> findAll(Pageable pageable) {
-        Page<Product> productPage = productRepository.findAll(pageable);
+    public Page<ProductDTO> findAll(ProductFilterDTO productFilterDTO, Pageable pageable) {
+        Page<Product> productPage = productRepository.findAll(ProductSpec.filters(productFilterDTO), pageable);
 
         List<ProductDTO> productDTOList = productMapper.listProductToListProductDTO(productPage.getContent());
 

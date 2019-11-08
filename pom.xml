@@ -66,6 +66,11 @@
 			<artifactId>flyway-core</artifactId>
 			<version>5.2.4</version>
 		</dependency>
+		<dependency>
+			<groupId>com.owlike</groupId>
+			<artifactId>genson</artifactId>
+			<version>1.6</version>
+		</dependency>
 	</dependencies>
 
 	<build>

@@ -1,5 +1,6 @@
 package reasoneatapi.controller;
 
+import com.owlike.genson.Genson;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import reasoneatapi.dto.ProductFilterDTO;
 import reasoneatapi.dto.ProductDTO;
 import reasoneatapi.helper.SortHelper;
 import reasoneatapi.service.CategoryService;
@@ -37,6 +39,12 @@ public class ProductController {
     @Autowired
     private SortHelper sortHelper;
 
+    private Genson genson;
+
+    public ProductController() {
+        this.genson = new Genson();
+    }
+
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
         binder.setValidator(new ProductValidator(productService, categoryService, monthService));
@@ -48,11 +56,13 @@ public class ProductController {
             @RequestParam(required = false, name = "page", defaultValue = "0") int page,
             @RequestParam(required = false, name = "size", defaultValue = "10") int size,
             @RequestParam(required = false, name = "sortProperty", defaultValue = "name") String sortProperty,
-            @RequestParam(required = false, name = "sortDirection", defaultValue = "ASC") Sort.Direction sortDirection
+            @RequestParam(required = false, name = "sortDirection", defaultValue = "ASC") Sort.Direction sortDirection,
+            @RequestParam(required = false, name = "filters", defaultValue = "{}") String filters
             ) {
         String validSortProperty = sortHelper.getValidSortProperty(sortProperty, ProductDTO.class, "name");
         Sort sort = new Sort(sortDirection, validSortProperty);
-        return productService.findAll(PageRequest.of(page, size, sort));
+        ProductFilterDTO productFilterDTO = genson.deserialize(filters, ProductFilterDTO.class);
+        return productService.findAll(productFilterDTO, PageRequest.of(page, size, sort));
     }
 
     @GetMapping("/{id}")
