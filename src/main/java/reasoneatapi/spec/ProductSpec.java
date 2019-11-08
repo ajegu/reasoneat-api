@@ -8,7 +8,7 @@ public class ProductSpec {
     public static Specification<Product> filters(ProductFilterDTO productFilterDTO) {
         return (Specification<Product>) (root, criteriaQuery, criteriaBuilder) -> {
             if (productFilterDTO.name != null) {
-                return criteriaBuilder.like(criteriaBuilder.upper(root.get("name")), "%" + productFilterDTO.name.toUpperCase() + "%");
+                return criteriaBuilder.like(criteriaBuilder.upper(root.get("name")), "%" + productFilterDTO.name.toUpperCase().trim() + "%");
             }
             return null;
         };
