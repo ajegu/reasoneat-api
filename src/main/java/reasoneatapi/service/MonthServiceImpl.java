@@ -1,6 +1,7 @@
 package reasoneatapi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import reasoneatapi.dto.MonthDTO;
 import reasoneatapi.exception.MonthNotFoundException;
@@ -8,6 +9,7 @@ import reasoneatapi.mapper.MonthMapper;
 import reasoneatapi.model.Month;
 import reasoneatapi.repository.MonthRepository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -28,5 +30,11 @@ public class MonthServiceImpl implements MonthService {
         }
 
         return monthMapper.monthToMonthDTO(monthOptional.get());
+    }
+
+    @Override
+    public List<MonthDTO> findAll() {
+        List<Month> monthList = monthRepository.findAll();
+        return monthMapper.listMonthToListMonthDTO(monthList);
     }
 }

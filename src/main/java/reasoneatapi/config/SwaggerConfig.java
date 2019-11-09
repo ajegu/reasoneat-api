@@ -25,8 +25,9 @@ public class SwaggerConfig {
                 .build()
                 .apiInfo(apiInfo())
                 .tags(
-                        new Tag("Catégorie", "Gestion des catégories"),
-                        new Tag("Produits", "Gestion des produits")
+                        new Tag("Catégorie", "Endpoint catégories"),
+                        new Tag("Produits", "Endpoint produits"),
+                        new Tag("Mois", "Endpoint mois")
                 );
     }
 
