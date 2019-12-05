@@ -11,7 +11,9 @@ import reasoneatapi.model.Product_;
 import reasoneatapi.repository.MonthRepository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Tuple;
 import javax.persistence.criteria.*;
+import javax.persistence.metamodel.ListAttribute;
 import java.util.*;
 
 @Service
@@ -29,27 +31,17 @@ public class ProductSpec implements Specification<Product> {
     @Override
     public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
 
-        if (productFilterDTO.months != null) {
-//            List<Month> monthList = new ArrayList<>();
-//            for (String monthId: productFilterDTO.months) {
-//                Optional<Month> optionalMonth = monthRepository.findById(UUID.fromString(monthId));
-//                optionalMonth.ifPresent(monthList::add);
-//            }
+        if (productFilterDTO.months != null && !productFilterDTO.months.isEmpty()) {
 
-//            Subquery<Month> monthSubquery = criteriaQuery.subquery(Month.class);
-//            Root<Month> monthRoot = monthSubquery.from(Month.class);
-//            Join<Product, Month> productMonthJoin = monthRoot.joinCollection("products");
-//            monthSubquery.select(productMonthJoin)
-//                    .where(criteriaBuilder.equal(monthRoot.get(Month_.name), "Février"));
-//
-//            Root<Month> monthRoot = criteriaQuery.from(Month.class);
-//            Join<Product, Month> productMonthJoin = root.joinCollection("months");
-//
-//            Subquery<UUID> uuidSubquery = criteriaQuery.subquery(UUID.class);
-//
-//
-//
-//            return criteriaBuilder.in(root.get(Product_.months)).value(monthList);
+            List<Month> monthList = new ArrayList<>();
+            for (String monthId: productFilterDTO.months) {
+                Optional<Month> optionalMonth = monthRepository.findById(UUID.fromString(monthId));
+                optionalMonth.ifPresent(monthList::add);
+            }
+
+            Predicate predicate = root.join(Product_.months).in(monthList);
+            criteriaQuery.distinct(true);
+            return predicate;
         }
 
         return null;
