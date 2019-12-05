@@ -30,9 +30,15 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductMapper productMapper;
 
+    @Autowired
+    private ProductSpec productSpec;
+
     @Override
     public Page<ProductDTO> findAll(ProductFilterDTO productFilterDTO, Pageable pageable) {
-        Page<Product> productPage = productRepository.findAll(ProductSpec.filters(productFilterDTO), pageable);
+
+        productSpec.setProductFilterDTO(productFilterDTO);
+
+        Page<Product> productPage = productRepository.findAll(productSpec, pageable);
 
         List<ProductDTO> productDTOList = productMapper.listProductToListProductDTO(productPage.getContent());
 

@@ -6,9 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Collection;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Data
@@ -52,6 +50,6 @@ public class Product {
     )
     @NotNull(message = "Les mois sont obligatoires")
     @NotEmpty(message = "Au moins un mois doit être renseigné")
-    private Collection<Month> months;
+    private List<Month> months;
 
 }

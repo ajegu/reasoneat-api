@@ -5,9 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Collection;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "name"))
@@ -40,5 +38,5 @@ public class Category {
     private Date updatedAt;
 
     @OneToMany(mappedBy = "category")
-    private Collection<Product> products;
+    private List<Product> products;
 }

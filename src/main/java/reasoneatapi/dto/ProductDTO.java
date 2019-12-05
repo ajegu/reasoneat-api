@@ -3,9 +3,7 @@ package reasoneatapi.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 
 @Data
 public class ProductDTO {
@@ -30,6 +28,6 @@ public class ProductDTO {
 
     private CategoryDTO category;
 
-    private Collection<MonthDTO> months;
+    private List<MonthDTO> months;
 
 }

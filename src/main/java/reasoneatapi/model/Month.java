@@ -3,8 +3,7 @@ package reasoneatapi.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Data
@@ -18,7 +17,7 @@ public class Month {
     private String name;
 
     @ManyToMany(mappedBy = "months")
-    private Collection<Product> products;
+    private List<Product> products;
 
     @ManyToOne
     @JoinColumn(name = "season_id")
