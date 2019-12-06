@@ -31,6 +31,15 @@ public class ProductSpec implements Specification<Product> {
     @Override
     public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
 
+        List<Predicate> predicateList = new ArrayList<>();
+
+        // Prédicat pour la recherche par libellé
+        if (productFilterDTO.name != null && !productFilterDTO.name.isEmpty()) {
+            Predicate namePredicate = criteriaBuilder.like(criteriaBuilder.upper(root.get(Product_.name)), "%" + productFilterDTO.name.toUpperCase() + "%");
+            predicateList.add(namePredicate);
+        }
+
+        // Prédicat pour le filtre par mois
         if (productFilterDTO.months != null && !productFilterDTO.months.isEmpty()) {
 
             List<Month> monthList = new ArrayList<>();
@@ -39,9 +48,14 @@ public class ProductSpec implements Specification<Product> {
                 optionalMonth.ifPresent(monthList::add);
             }
 
-            Predicate predicate = root.join(Product_.months).in(monthList);
+            Predicate monthsPredicate = root.join(Product_.months).in(monthList);
             criteriaQuery.distinct(true);
-            return predicate;
+            predicateList.add(monthsPredicate);
+        }
+
+        // Application des prédicats
+        if (!predicateList.isEmpty())  {
+            return criteriaBuilder.and(predicateList.toArray(new Predicate[0]));
         }
 
         return null;
