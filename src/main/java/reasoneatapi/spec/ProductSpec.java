@@ -4,16 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import reasoneatapi.dto.ProductFilterDTO;
+import reasoneatapi.model.Category;
 import reasoneatapi.model.Month;
-import reasoneatapi.model.Month_;
 import reasoneatapi.model.Product;
 import reasoneatapi.model.Product_;
+import reasoneatapi.repository.CategoryRepository;
 import reasoneatapi.repository.MonthRepository;
-
-import javax.persistence.EntityManager;
-import javax.persistence.Tuple;
 import javax.persistence.criteria.*;
-import javax.persistence.metamodel.ListAttribute;
 import java.util.*;
 
 @Service
@@ -21,6 +18,9 @@ public class ProductSpec implements Specification<Product> {
 
     @Autowired
     private MonthRepository monthRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     private ProductFilterDTO productFilterDTO;
 
@@ -51,6 +51,17 @@ public class ProductSpec implements Specification<Product> {
             Predicate monthsPredicate = root.join(Product_.months).in(monthList);
             criteriaQuery.distinct(true);
             predicateList.add(monthsPredicate);
+        }
+
+        // Prédicat pour le filtre catégorie
+        if (productFilterDTO.categories != null && !productFilterDTO.categories.isEmpty()) {
+            List<Category> categoryList = new ArrayList<>();
+            for (String categoryId: productFilterDTO.categories) {
+                Optional<Category> optionalCategory = categoryRepository.findById(UUID.fromString(categoryId));
+                optionalCategory.ifPresent(categoryList::add);
+            }
+
+            predicateList.add(root.join(Product_.category).in(categoryList));
         }
 
         // Application des prédicats
