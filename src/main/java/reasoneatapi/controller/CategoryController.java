@@ -1,7 +1,9 @@
 package reasoneatapi.controller;
 
-import io.swagger.annotations.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.WebDataBinder;
@@ -18,8 +20,11 @@ import java.util.UUID;
 @Api(tags = {"Catégorie"})
 public class CategoryController {
 
-    @Autowired
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
+
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
