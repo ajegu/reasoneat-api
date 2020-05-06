@@ -11,8 +11,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import reasoneatapi.dto.ProductFilterDTO;
 import reasoneatapi.dto.ProductDTO;
+import reasoneatapi.dto.ProductFilterDTO;
 import reasoneatapi.helper.SortHelper;
 import reasoneatapi.service.CategoryService;
 import reasoneatapi.service.MonthService;
@@ -27,22 +27,22 @@ import java.util.UUID;
 @Api(tags = {"Produits"})
 public class ProductController {
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
 
-    @Autowired
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
 
-    @Autowired
-    private MonthService monthService;
+    private final MonthService monthService;
 
     @Autowired
     private SortHelper sortHelper;
 
-    private Genson genson;
+    private final Genson genson;
 
-    public ProductController() {
+    public ProductController(MonthService monthService, CategoryService categoryService, ProductService productService) {
         this.genson = new Genson();
+        this.monthService = monthService;
+        this.categoryService = categoryService;
+        this.productService = productService;
     }
 
     @InitBinder
